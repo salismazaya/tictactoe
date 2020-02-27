@@ -34,8 +34,6 @@ class Tictactoe:
 			self.col[x - 1] = "X"
 	
 	def who_win(self):
-		if len(self.getEmptyColoums()) == 0:
-			return "Draw"
 		col = self.col
 		win = [("X", "X", "X"), ("O", "O", "O")]
 		rules = [(0,1,2), (3,4,5), (6,7,8)]
@@ -45,6 +43,8 @@ class Tictactoe:
 			w = tuple([col[i] for i in x])
 			if w in win:
 				return "AI" if "X" in w else "You"
+		if len(self.getEmptyColoums()) == 0:
+			return "Draw"
 
 	def getEmptyColoums(self):
 		return [x for x in self.col if x != "O" and x != "X"]
